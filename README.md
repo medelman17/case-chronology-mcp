@@ -38,40 +38,59 @@ pip install -r requirements.txt
 
 Add the server to your Claude Desktop configuration:
 
-### Windows Users
+### Windows Users - Step by Step
 
-1. First, clone and set up the repository:
-```powershell
-git clone https://github.com/medelman17/case-chronology-mcp.git
-cd case-chronology-mcp
-# Run the setup script to create virtual environment and install dependencies
-.\setup.bat
-```
+#### Step 1: Download and Setup
+1. Open **PowerShell** or **Command Prompt**
+2. Navigate to where you want to install (e.g., your GitHub folder):
+   ```powershell
+   cd C:\Users\%USERNAME%\GitHub
+   ```
+3. Clone the repository:
+   ```powershell
+   git clone https://github.com/medelman17/case-chronology-mcp.git
+   cd case-chronology-mcp
+   ```
+4. **IMPORTANT:** Run the setup script (this creates a virtual environment and installs dependencies):
+   ```powershell
+   .\setup.bat
+   ```
+   Wait for it to complete. You should see "Setup complete!" at the end.
 
-2. Add to Claude Desktop config:
+#### Step 2: Configure Claude Desktop
+1. Open **Claude Desktop**
+2. Go to **Settings** (gear icon in bottom left)
+3. Click **Developer** tab
+4. Find the **MCP Servers Configuration** section
+5. Add this configuration (**replace `%USERNAME%` with your actual username**):
+
 ```json
 {
   "mcpServers": {
     "case-chronology": {
-      "command": "C:\\Users\\YourUsername\\GitHub\\case-chronology-mcp\\run_server.bat"
+      "command": "C:\\Users\\%USERNAME%\\GitHub\\case-chronology-mcp\\run_server.bat"
     }
   }
 }
 ```
 
-**Note:** Make sure to replace `YourUsername` with your actual Windows username.
-
-Or if you have Python in your PATH:
+**For example, if your username is `mikee`, use:**
 ```json
 {
   "mcpServers": {
     "case-chronology": {
-      "command": "python",
-      "args": ["C:\\Users\\YourUsername\\GitHub\\case-chronology-mcp\\chronology_server.py"]
+      "command": "C:\\Users\\mikee\\GitHub\\case-chronology-mcp\\run_server.bat"
     }
   }
 }
 ```
+
+6. **Save** the configuration
+7. **Restart Claude Desktop**
+
+#### Step 3: Test It Works
+After restarting Claude Desktop, you should see the Case Chronology server connected. Try asking:
+> "Add an event: January 15, 2024 - Contract signed between ABC Corp and XYZ LLC"
 
 ### Mac/Linux Users
 
@@ -158,6 +177,34 @@ The server intelligently parses various date formats:
 ## Data Storage
 
 Events are stored in `case_chronology.json` in the same directory as the server. The file is created automatically on first use.
+
+## Troubleshooting (Windows)
+
+### ❌ "Virtual environment not found" error
+- Make sure you ran `.\setup.bat` first
+- Check that the `venv` folder exists in your project directory
+
+### ❌ "Python not found" error  
+- Install Python 3.10 or later from [python.org](https://python.org)
+- Make sure to check "Add Python to PATH" during installation
+
+### ❌ "Setup failed" error
+- Try running PowerShell as Administrator
+- Or manually create the environment:
+  ```powershell
+  python -m venv venv
+  venv\Scripts\activate
+  pip install -r requirements.txt
+  ```
+
+### ❌ Server disconnects immediately
+- Check that your path in Claude Desktop config is correct
+- Make sure to use **double backslashes** (`\\`) in the JSON path
+- Verify your username is correct in the path
+
+### ❌ "Permission denied" errors
+- Run PowerShell as Administrator
+- Or try installing in a different location (like your Documents folder)
 
 ## Testing
 
