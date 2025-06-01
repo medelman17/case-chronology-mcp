@@ -12,19 +12,24 @@ A Model Context Protocol (MCP) server for building and managing chronological ti
 
 ## Installation
 
+### Option 1: Using uvx (Recommended)
+
+No installation needed! The server can be run directly with `uvx`.
+
+### Option 2: Traditional Installation
+
 1. Clone this repository:
 ```bash
 git clone https://github.com/medelman17/case-chronology-mcp.git
 cd case-chronology-mcp
 ```
 
-2. Create and activate a virtual environment:
+2. Install with uv:
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+uv pip install -e .
 ```
 
-3. Install dependencies:
+Or with pip:
 ```bash
 pip install -r requirements.txt
 ```
@@ -33,9 +38,24 @@ pip install -r requirements.txt
 
 Add the server to your Claude Desktop configuration:
 
-1. Open your Claude Desktop settings
-2. Find the MCP servers configuration
-3. Add this server:
+### Option 1: Using uvx (Recommended)
+
+```json
+{
+  "mcpServers": {
+    "case-chronology": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/medelman17/case-chronology-mcp.git",
+        "case-chronology-mcp"
+      ]
+    }
+  }
+}
+```
+
+### Option 2: Local Installation
 
 ```json
 {

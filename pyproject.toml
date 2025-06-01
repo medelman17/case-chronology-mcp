@@ -1,0 +1,31 @@
+[project]
+name = "case-chronology-mcp"
+version = "0.1.0"
+description = "MCP server for building and managing chronological timelines of legal case events"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Michael Edelman", email = "medelman17@gmail.com"}
+]
+dependencies = [
+    "fastmcp>=2.5.0",
+    "python-dateutil>=2.8.0"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/medelman17/case-chronology-mcp"
+"Bug Tracker" = "https://github.com/medelman17/case-chronology-mcp/issues"
+
+[project.scripts]
+case-chronology-mcp = "chronology_server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0"
+]

@@ -1,3 +1,4 @@
+#!/usr/bin/env -S uvx --with fastmcp --with python-dateutil
 from fastmcp import FastMCP
 import json
 import os
@@ -428,5 +429,9 @@ def get_schema() -> str:
     - "around 3/15/2023" → approximate
     """
 
-if __name__ == "__main__":
+def main():
+    """Entry point for the MCP server"""
     mcp.run()
+
+if __name__ == "__main__":
+    main()
