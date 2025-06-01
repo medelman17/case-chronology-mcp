@@ -41,10 +41,11 @@ Add the server to your Claude Desktop configuration:
 ### Windows Users
 
 1. First, clone and set up the repository:
-```bash
+```powershell
 git clone https://github.com/medelman17/case-chronology-mcp.git
 cd case-chronology-mcp
-pip install -r requirements.txt
+# Run the setup script to create virtual environment and install dependencies
+.\setup.bat
 ```
 
 2. Add to Claude Desktop config:
@@ -57,6 +58,8 @@ pip install -r requirements.txt
   }
 }
 ```
+
+**Note:** Make sure to replace `YourUsername` with your actual Windows username.
 
 Or if you have Python in your PATH:
 ```json
