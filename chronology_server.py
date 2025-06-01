@@ -1,4 +1,4 @@
-#!/usr/bin/env -S uvx --with fastmcp --with python-dateutil
+#!/usr/bin/env python3
 from fastmcp import FastMCP
 import json
 import os
