@@ -38,7 +38,41 @@ pip install -r requirements.txt
 
 Add the server to your Claude Desktop configuration:
 
-### Option 1: Using uvx (Recommended)
+### Windows Users
+
+1. First, clone and set up the repository:
+```bash
+git clone https://github.com/medelman17/case-chronology-mcp.git
+cd case-chronology-mcp
+pip install -r requirements.txt
+```
+
+2. Add to Claude Desktop config:
+```json
+{
+  "mcpServers": {
+    "case-chronology": {
+      "command": "C:\\Users\\YourUsername\\GitHub\\case-chronology-mcp\\run_server.bat"
+    }
+  }
+}
+```
+
+Or if you have Python in your PATH:
+```json
+{
+  "mcpServers": {
+    "case-chronology": {
+      "command": "python",
+      "args": ["C:\\Users\\YourUsername\\GitHub\\case-chronology-mcp\\chronology_server.py"]
+    }
+  }
+}
+```
+
+### Mac/Linux Users
+
+#### Option 1: Using uvx (Recommended)
 
 ```json
 {
@@ -55,7 +89,7 @@ Add the server to your Claude Desktop configuration:
 }
 ```
 
-### Option 2: Local Installation
+#### Option 2: Local Installation
 
 ```json
 {
